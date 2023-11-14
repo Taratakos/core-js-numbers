@@ -236,8 +236,13 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  // конвертуємо значення в число за допомогою вбудованої ф-іїї Number
+  const convertedValue = Number(value);
+  // перевіряємо, чи результат конвертаціїї є дійсним числом
+  // викорситовуємо Number.isNan для точної перевірки на NaN
+  // якщо результат не є числом повертаємо значення за замовчуванням
+  return Number.isNaN(convertedValue) ? def : convertedValue;
 }
 
 /**
@@ -251,8 +256,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -268,8 +273,26 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  // перевіряємо два базових випадки для послідовності Фібоначчі(наступне число є сумою двох попередніх)
+  if (index === 0) {
+    return 0;
+  }
+  if (index === 1 || index === 2) {
+    return 1;
+  }
+  // Якщо індекс не є базовим випадком. ф-ія ініціалізує дві змінні обидві рівні 1. вони представляють два попередні числа Фібоначчі
+  let prevNumb = 1;
+  let currentNumb = 1;
+  for (let i = 3; i <= index; i += 1) {
+    // обчислює наступне число Фібо
+    const nextNumb = prevNumb + currentNumb;
+    // Оновлює значення prevNumb i currentnumb для наступної ітерації
+    prevNumb = currentNumb;
+    currentNumb = nextNumb;
+  }
+
+  return currentNumb;
 }
 
 /**
@@ -283,8 +306,14 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  // let sum = 0;
+  // for (let i = 0; i <= n; i += 1) {
+  //   sum += i;
+  // }
+  // return sum;
+  const sumInteger = (n * (n + 1)) / 2;
+  return sumInteger;
 }
 
 /**
@@ -298,8 +327,19 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  // const numbToStr = num.toString().split('');
+  // let sum = 0;
+  // for (let i = 0; i < numbToStr.length; i += 1) {
+  //   sum += Number(numbToStr[i]);
+  // }
+
+  // return sum;
+  // метод .map(Number) - перетворює кожен симвал рядка у числовий тип. reduce додає їх дло суми
+  const digits = num.toString().split('').map(Number);
+  // метод reduce для обчислення суми значень масиву цифр.
+  const sum = digits.reduce((acc, digit) => acc + digit, 0);
+  return sum;
 }
 
 /**

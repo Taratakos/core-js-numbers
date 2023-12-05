@@ -353,8 +353,12 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  // обчислюємо логарифм за основою 2 для num
+  const logBase2 = Math.log2(num);
+
+  // Перевіряємо чи обчислений логарифм є цілим числом
+  return Math.floor(logBase2) === logBase2;
 }
 
 /**
@@ -367,8 +371,9 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  // використаємо вбудовану математичну функцію яка обчислює синус числа
+  return Math.sin(num);
 }
 
 /**
@@ -382,8 +387,9 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  // вбудований метод toString() - для конвертації числа в рядок
+  return number.toString(base);
 }
 
 /**
@@ -396,8 +402,9 @@ function numberToStringInBase(/* number, base */) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  //  використаємо метод toExponentila обєкта Number для конвертації заданого number у рядкове представлення в експоненційній нотаціїї. fractionDigits - вказує на к-сть цифр після десяткової коми
+  return number.toExponential(fractionDigits);
 }
 
 /**

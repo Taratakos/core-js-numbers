@@ -520,8 +520,9 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  // використаємо вбудований метод parseInt який розбиває рядок і повертає  ціле число за вказаним основанням. Якщо не вдається розібрати рядок як ціле число parseInt повертає NaN
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -535,8 +536,9 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+function isSafeInteger(number) {
+  // використаємо вбудований метод для перевірки безпечних цілих чисел
+  return Number.isSafeInteger(number);
 }
 
 /**
